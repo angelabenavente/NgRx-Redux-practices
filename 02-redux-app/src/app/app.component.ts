@@ -15,9 +15,9 @@ export class AppComponent {
   counter: number;
 
   constructor( private store: Store<AppState>) {
-    this.store.sub+( state => {
-      console.log(state);
-      this.counter = state.counter;
+    this.store.select('counter').subscribe( counter => {
+      console.log(counter);
+      //this.counter = state.counter;
     })
   }
 
