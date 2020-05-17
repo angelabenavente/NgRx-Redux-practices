@@ -22,6 +22,9 @@ function reducer( state = 10, action: Action ) {
     case 'DECREMENTS':
         return state -= 1;
   
+    case 'MULTIPLY':
+        return state * action.payload;
+      
     default:
       return state;
   }
@@ -41,3 +44,10 @@ const decrementAction: Action = {
 }
 
 console.log( reducer(10, decrementAction )); // 9
+
+const multiplyAction: Action = {
+  type: 'MULTIPLY',
+  payload: 2
+}
+
+console.log( reducer(10, multiplyAction )); // 10
