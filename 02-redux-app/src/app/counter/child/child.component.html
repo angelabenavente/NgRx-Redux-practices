@@ -3,7 +3,12 @@
 
 <div class="row text-center">
     <div class="col">
-        <button (click)="multiply()" class="btn btn-primary mr-5">Multiply</button>
-        <button (click)="divide()" class="btn btn-info">Divide</button>
+        <button (click)="reset()" class="btn btn-primary mr-5">Reset</button>
+    </div>
+</div>
+
+<div class="row text-center">
+    <div class="col">
+        <app-grandchild [counter]="counter" (changeCounter)="resetGrandchild($event)"></app-grandchild>
     </div>
 </div>

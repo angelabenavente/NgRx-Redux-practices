@@ -9,7 +9,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class ChildComponent implements OnInit {
 
   @Input() counter: number;
-  @Output() changeCounter = new EventEmitter<number>[];
+  @Output() changeCounter = new EventEmitter<number>();
 
   constructor() { }
 
@@ -26,4 +26,8 @@ export class ChildComponent implements OnInit {
     this.changeCounter.emit(this.counter);
   }
 
+  resetGrandchild( newCounter ) {
+    this.counter = newCounter;
+    this.changeCounter.emit(this.counter);
+  }
 }
