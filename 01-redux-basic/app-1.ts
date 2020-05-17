@@ -11,11 +11,21 @@ interface Action { //Object rules
 
 function reducer( state = 10, action: Action ) {
   
-  if (action.type === 'INCREMENTS') {
-    return state += 1;
+  // if (action.type === 'INCREMENTS') {
+  //   return state += 1;
+  // }
+
+  switch ( action.type ) { // better use switch in reducer
+    case 'INCREMENTS':
+      return state += 1;
+
+    case 'DECREMENTS':
+        return state -= 1;
+  
+    default:
+      return state;
   }
 
-  return state;
 }
 
 //Use reducer
@@ -24,4 +34,10 @@ const incrementAction: Action = {
   type: 'INCREMENTS'
 }
 
-console.log( reducer(10, incrementAction ));
+console.log( reducer(10, incrementAction )); // 11
+
+const decrementAction: Action = {
+  type: 'DECREMENTS'
+}
+
+console.log( reducer(10, decrementAction )); // 9
