@@ -25,6 +25,9 @@ function reducer( state = 10, action: Action ) {
     case 'MULTIPLY':
         return state * action.payload;
       
+    case 'DIVIDE':
+      return state * action.payload;
+      
     default:
       return state;
   }
@@ -51,3 +54,10 @@ const multiplyAction: Action = {
 }
 
 console.log( reducer(10, multiplyAction )); // 10
+
+const divideAction: Action = {
+  type: 'DIVIDE',
+  payload: 2
+}
+
+console.log( reducer(10, divideAction) ); // 5
