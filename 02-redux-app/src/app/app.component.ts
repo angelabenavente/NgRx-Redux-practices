@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store,select } from '@ngrx/store';
 import * as actions from './counter/counter.actions';
 
 interface AppState {
@@ -15,10 +15,8 @@ export class AppComponent {
   counter: number;
 
   constructor( private store: Store<AppState>) {
-    this.store.select('counter').subscribe( counter => {
-      console.log(counter);
-      //this.counter = state.counter;
-    })
+    this.store.select('counter'
+    ).subscribe( counter => this.counter = counter);
   }
 
   increment(){
