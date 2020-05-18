@@ -1,4 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { reset } from '../counter.actions';
+import { Store } from 'redux';
 
 @Component({
   selector: 'app-grandchild',
@@ -8,17 +10,17 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class GrandchildComponent implements OnInit {
 
-  @Input() counter: number;
-  @Output() changeCounter = new EventEmitter<number>();
+  counter: number;
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit( private store: Store ): void {
+    this.store.select('counter')
+      .subscribe(counter => this.counter = counter);
   }
 
   reset() {
-    this.counter = 0;
-    this.changeCounter.emit(0);
+    this.store.dispatch( reset );
   }
 
 }

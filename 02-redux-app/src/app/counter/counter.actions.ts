@@ -10,5 +10,7 @@ export const multiply = createAction(
 export const divide = createAction(
   '[Counter] Divide',
   props<{number: number}>()
-  );
+);
+
+export const reset = createAction('[Counter] reset');
 
